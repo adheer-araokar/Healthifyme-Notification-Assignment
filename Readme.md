@@ -24,3 +24,5 @@ Similarly, you will also get the Query Id when you choose Add Query Only or when
 The requirement of the Notification to be sent AFTER 2 hours has been changed to a minimum tile delay of 10 seconds for testing purposes.
 
 When Creating Both Notification and Query form the UI, in case the Query creation fails due to invalid timestamp, the Notification is still created and its ID is returned. You can further use this ID to just create a query since the notification already exists.
+
+Since I have a windows system and I could not find a working MySQL connector with Python 3.6.1, I'm using SQLite3.
