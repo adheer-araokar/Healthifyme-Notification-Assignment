@@ -9,10 +9,10 @@ Since the port of the rest calls is hardcoded in the frontend application, the b
 Multiple python packages are used for thie project which will be required to be installed on the machine on which you need to run the applications.
 
 Primarily, Python 3.6.1 has been used with the following packages :-
-	Django
-	djangorestframework
-	apscheduler
-	django-cors-headers
+* **Django**
+* **djangorestframework**
+* **apscheduler**
+* **django-cors-headers**
 
 The UI is self explanatory, there are 3 radio buttons which give you the possible options of inputs and based on the one you select, the input text boxes will be visible.
 
