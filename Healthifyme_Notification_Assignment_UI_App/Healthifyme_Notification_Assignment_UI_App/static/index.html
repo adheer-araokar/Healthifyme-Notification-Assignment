@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notification Application</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{% static 'script.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" media="all" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <form>
+        <div id="AllRadioButtons" class="box1">
+            <input type="radio" name="notification" id="notification" onclick="showInputs()" value="0"> Insert Notification<br>
+            <input type="radio" name="notification" id="queryradiobutton" onclick="showInputs()" value="1"> Insert Query<br>
+            <input type="radio" name="notification" id="both" onclick="showInputs()" value="2"> Insert Both Notification and Query<br>
+        </div>
+        <div id="NotificationBlock" class="box2">
+            <label>Header</label><input type='text' id='header' name='header'><br>
+            <label>Content</label><input type='text' id='content' name='content'><br>
+            <label>Image URL</label><input type='text' id='imgurl' name='imgurl'><br>
+        </div>
+        <div id="QueryOuterBlock" class="box3">
+            <div id="NotificationIdBlock">
+                <label>Notification ID for Query</label><input type='text' id='noteid' name='noteid'><br>
+            </div>
+            <div id="QueryBlock">
+                <label>Query</label><input type='text' id='query' name='query'><br>
+                <label>Timestamp</label><input type='text' id='timestamp' name='timestamp'><br>
+            </div>
+        </div>
+        <div id="SubmitButtonID" class="submitbutton">
+            <input type="button" value="Submit" onclick="makeRestRequest()">
+        </div>
+    </form>
+    <div id="ResponseTextDiv">
+        <h1 id="ResponseText">
+
+        </h1>
+    </div>
+</body>
+</html>
