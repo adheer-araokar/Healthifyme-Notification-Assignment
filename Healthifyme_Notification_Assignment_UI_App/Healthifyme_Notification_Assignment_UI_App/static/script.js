@@ -1,16 +1,19 @@
 
 function showInputs() {
     if (document.getElementById('notification').checked) {
+        document.getElementById('ResponseText').innerHTML = ""
         document.getElementById('NotificationBlock').style.display = 'block';
         document.getElementById('NotificationIdBlock').style.display = 'none';
         document.getElementById('QueryBlock').style.display = 'none';
     }
     else if(document.getElementById('queryradiobutton').checked){
+        document.getElementById('ResponseText').innerHTML = ""
         document.getElementById('NotificationBlock').style.display = 'none';
         document.getElementById('NotificationIdBlock').style.display = 'block';
         document.getElementById('QueryBlock').style.display = 'block';
     }
     else {
+        document.getElementById('ResponseText').innerHTML = ""
         document.getElementById('NotificationBlock').style.display = 'block';
         document.getElementById('NotificationIdBlock').style.display = 'none';
         document.getElementById('QueryBlock').style.display = 'block';
@@ -27,7 +30,8 @@ function makeRestRequest(){
           "content": document.getElementById('content').value,
           "image_url": document.getElementById('imgurl').value
         }
-        sendAJAXRequest(url, data);
+        sendAJAXRequest(url, data, "Created the Notification! The ID for further usage :- ");
+        resetInput();
     }
     else if(document.getElementById('queryradiobutton').checked){
         if(!validate('query'))
@@ -38,7 +42,8 @@ function makeRestRequest(){
           "query": document.getElementById('query').value,
           "timestamp": document.getElementById('timestamp').value
         }
-        sendAJAXRequest(url, data);
+        sendAJAXRequest(url, data, "Created the Query! The ID for further usage :- ");
+        resetInput();
     }
     else {
         if(!validate('both'))
@@ -55,14 +60,15 @@ function makeRestRequest(){
         xhttp.onreadystatechange = function () {
             if (xhttp.readyState == 4 && xhttp.status == 200) {
                 var response = JSON.parse(xhttp.responseText);
-                document.getElementById('ResponseText').innerHTML = response.id;
+                document.getElementById('ResponseText').innerHTML = "Created the Notification! The ID for further usage :- " + response.id;
                 var url="http://127.0.0.1:8000/put_query/"
                 var data = {
                   "notificationId": response.id,
                   "query": document.getElementById('query').value,
                   "timestamp": document.getElementById('timestamp').value
                 }
-                sendAJAXRequest(url, data);
+                sendAJAXRequest(url, data, "Created the Query! The ID for further usage :- ");
+                resetInput();
                 return;
             }
             else if(xhttp.readyState == 4 && (xhttp.status == 400 || xhttp.status == 404)){
@@ -153,14 +159,14 @@ function validateNumber(inputtxt)
     return false;
 }
 
-function sendAJAXRequest(url, data){
+function sendAJAXRequest(url, data, output_message){
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", url, true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             var response = JSON.parse(xhttp.responseText);
-            document.getElementById('ResponseText').innerHTML = response.id;
+            document.getElementById('ResponseText').innerHTML = output_message + response.id;
             return response.id;
         }
         else if(xhttp.readyState == 4 && (xhttp.status == 400 || xhttp.status == 404)){
@@ -169,4 +175,13 @@ function sendAJAXRequest(url, data){
         }
     }
     xhttp.send(JSON.stringify(data));
+}
+
+function resetInput(){
+    document.getElementById('header').value = "";
+    document.getElementById('content').value = "";
+    document.getElementById('imgurl').value = "";
+    document.getElementById('noteid').value = "";
+    document.getElementById('query').value = "";
+    document.getElementById('timestamp').value = "";
 }
