@@ -1,4 +1,5 @@
 import time
+import re
 from Healthifyme_Notification_Assignment_REST_App.models import Notifications
 from Healthifyme_Notification_Assignment_REST_App.models import QueryNotificationMapping
 from Healthifyme_Notification_Assignment_REST_App.models import AuthenticatedUser
@@ -40,7 +41,8 @@ class NotificationView(APIView):
         return JsonResponse({'id': serialized_notification.data.get('id')})
 
     def validate_image_url(self, image_url):
-        if image_url.split('.')[-1] not in self.valid_image_formats:
+        # if image_url.split('.')[-1] not in self.valid_image_formats:
+        if re.split("\.+", image_url)[-1] not in self.valid_image_formats:
             return False
         return True
 

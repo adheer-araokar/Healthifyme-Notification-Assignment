@@ -19,10 +19,10 @@ from Healthifyme_Notification_Assignment_REST_App import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^get_notification/(?P<num>[0-9]+)', views.NotificationView.as_view()),
-    url(r'^get_query/(?P<num>[0-9]+)', views.QueryView.as_view()),
-    url(r'^get_user/(?P<num>[0-9]+)', views.AuthenticatedUserView.as_view()),
-    url(r'^put_notification/', views.NotificationView.as_view()),
-    url(r'^put_query/', views.QueryView.as_view()),
-    url(r'^put_user/', views.AuthenticatedUserView.as_view()),
+    url(r'^get_notification/(?P<num>[0-9]+)', views.NotificationView.as_view(), name='get-notification'),
+    url(r'^get_query/(?P<num>[0-9]+)', views.QueryView.as_view(), name='get-query'),
+    url(r'^get_user/(?P<num>[0-9]+)', views.AuthenticatedUserView.as_view(), name='get-user'),
+    url(r'^put_notification/', views.NotificationView.as_view(), name='put-notification'),
+    url(r'^put_query/', views.QueryView.as_view(), name='put-query'),
+    url(r'^put_user/', views.AuthenticatedUserView.as_view(), name='put-user'),
 ]
