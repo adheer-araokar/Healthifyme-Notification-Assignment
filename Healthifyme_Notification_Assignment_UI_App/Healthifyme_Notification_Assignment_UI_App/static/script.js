@@ -38,7 +38,7 @@ function makeRestRequest(){
             return;
         var url="http://127.0.0.1:8000/put_query/"
         var data = {
-          "notificationId": document.getElementById('noteid').value,
+          "notification_id": document.getElementById('noteid').value,
           "query": document.getElementById('query').value,
           "timestamp": document.getElementById('timestamp').value
         }
@@ -63,7 +63,7 @@ function makeRestRequest(){
                 document.getElementById('ResponseText').innerHTML = "Created the Notification! The ID for further usage :- " + response.id;
                 var url="http://127.0.0.1:8000/put_query/"
                 var data = {
-                  "notificationId": response.id,
+                  "notification_id": response.id,
                   "query": document.getElementById('query').value,
                   "timestamp": document.getElementById('timestamp').value
                 }

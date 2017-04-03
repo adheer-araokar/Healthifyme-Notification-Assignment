@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from Healthifyme_Notification_Assignment_REST_App.models import Notifications, QueryNotificationMapping, AuthenticatedUser
+from Healthifyme_Notification_Assignment_REST_App.models import Notifications
+from Healthifyme_Notification_Assignment_REST_App.models import QueryNotificationMapping
+from Healthifyme_Notification_Assignment_REST_App.models import AuthenticatedUser
 
 
 class AuthenticatedUserSerializer(serializers.ModelSerializer):
@@ -17,4 +19,4 @@ class NotificationSerializer(serializers.ModelSerializer):
 class QuerySerializer(serializers.ModelSerializer):
     class Meta:
         model = QueryNotificationMapping
-        fields = ('id', 'query', 'notificationId', 'timestamp', 'status')
+        fields = ('id', 'query', 'notification_id', 'timestamp', 'status')

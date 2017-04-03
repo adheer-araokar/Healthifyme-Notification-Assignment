@@ -1,5 +1,5 @@
-__author__ = 'aaraokar'
 from django.db import models
+__author__ = 'aaraokar'
 
 
 class AuthenticatedUser(models.Model):
@@ -21,7 +21,7 @@ class Notifications(models.Model):
 
 class QueryNotificationMapping(models.Model):
     query = models.TextField()
-    notificationId = models.ForeignKey(Notifications)
+    notification_id = models.ForeignKey(Notifications)
     timestamp = models.DateTimeField()
     status = models.BooleanField(default=False)
 
